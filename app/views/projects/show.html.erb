@@ -9,7 +9,7 @@
 		  <%= link_to fa_icon("pencil") + " Edit Project",
 		      edit_project_path(@project), class: "btn btn-primary" %>
 		</li>
-		
+
 		<% admins_only do %>
 			<li>
 				<%= link_to fa_icon("trash") + " Delete Project",
@@ -21,7 +21,6 @@
 		<% end %>
 	</ul>	
 </header>
-
 
 <header>
 	<h2>Tickets</h2>
