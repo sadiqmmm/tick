@@ -11,16 +11,24 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-group :development, :test do  
-  gem 'byebug'
-  gem "rspec-rails"
-  gem "capybara", "~> 2.4" 
-end
-
-group :development do  
-  gem 'web-console', '~> 2.0'  
+group :development, :test do
+	gem 'sqlite3'
+  gem 'pry-byebug'
+  gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'sqlite3'
+  
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rails_best_practices'
+  
+  gem 'bullet'  
+  gem 'rack-mini-profiler'
+  gem 'brakeman'
+  gem 'rubocop', require: false
+  gem 'rails-erd', require: false
+  gem 'awesome_print', require:"ap"
+  gem 'quiet_assets'
 end
 
 gem 'puma'
