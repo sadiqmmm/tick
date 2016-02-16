@@ -13,9 +13,13 @@
 </header>
 
 <div id="projects">
-	<% @projects.each do |project| %>
-		<h2><%= link_to project.name, project %></h2>
-		<p><%= project.description %></p>
-	<% end %>
+	<% if @projects.present? %>
+		<% @projects.each do |project| %>
+			<h2><%= link_to project.name, project %></h2>
+			<p><%= project.description %></p>
+		<% end %>
+	<% else %>
+		No projects
+	<% end %>	
 </div>
 
