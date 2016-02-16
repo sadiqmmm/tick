@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+	
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -6,6 +7,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show		
+		authorize @project, :show?
 	end
 
 	def new
