@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	
+	scope :excluding_archived, lambda { where(archived_at: nil) }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,5 +9,14 @@ class User < ActiveRecord::Base
 
   def to_s
 	  "#{email} (#{admin? ? "Admin" : "User"})"
-	end       
+	end
+
+	def archive
+	  self.update(archived_at: Time.now)
+	end
+
+	def unarchive
+	  self.update(archived_at: nil)
+	end
+
 end
