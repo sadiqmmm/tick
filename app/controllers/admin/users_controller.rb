@@ -42,7 +42,7 @@ class Admin::UsersController < Admin::ApplicationController
 		  render "edit"
 		end
 	end
-
+	
 	def archive
 		if @user == current_user
 
