@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 	
+	has_many :roles
+
 	scope :excluding_archived, lambda { where(archived_at: nil) }
 
   # Include default devise modules. Others available are:
@@ -25,5 +27,9 @@ class User < ActiveRecord::Base
 
 	def active_for_authentication?
 	  super && archived_at.nil?
+	end
+
+	def role_on(project)
+	  roles.find_by(project_id: project).try(:name)
 	end
 end
