@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
 
     resources :projects, only: [:new, :create, :destroy]
+    resources :states, only: [:index, :new, :create]
   end
 
   devise_for :users
