@@ -4,11 +4,12 @@
 	<h1><%= @project.name %></h1>	
 	
 	<ul class="actions">
-
-		<li>
-		  <%= link_to fa_icon("pencil") + " Edit Project",
-		      edit_project_path(@project), class: "btn btn-primary" %>
-		</li>
+		<% if policy(@project).update? %>
+			<li>
+			  <%= link_to fa_icon("pencil") + " Edit Project",
+			      edit_project_path(@project), class: "btn btn-primary" %>
+			</li>
+		<% end %>
 
 		<% admins_only do %>
 			<li>
