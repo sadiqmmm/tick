@@ -1,5 +1,7 @@
 class Ticket < ActiveRecord::Base
  
+  mount_uploader :attachment, AttachmentUploader
+  
   belongs_to :project
   belongs_to :author, class_name: "User"
 
