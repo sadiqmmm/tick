@@ -1,5 +1,7 @@
 class Ticket < ActiveRecord::Base
  
+  before_create :assign_default_state
+
   belongs_to :project
   belongs_to :author, class_name: "User"
   belongs_to :state
@@ -11,4 +13,9 @@ class Ticket < ActiveRecord::Base
 
   validates :name, presence: true
   validates :description, length: { maximum: 1000 }
+
+  private
+		def assign_default_state
+  		self.state ||= State.default
+		end
 end
