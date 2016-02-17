@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :attachments, only: [:show]
+  resources :attachments, only: [:show, :new]
 
   resources :projects, only: [:index, :show, :edit, :update] do 
     resources :tickets
