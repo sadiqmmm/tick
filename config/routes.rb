@@ -21,5 +21,9 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
+  resources :tickets, only: [] do
+    resources :comments, only: [:create]
+  end
+
   root to: "projects#index"
 end
