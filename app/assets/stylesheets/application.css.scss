@@ -32,6 +32,12 @@ header {
 	margin-top: 20px;
 	}
 }
+
+.state {
+	@extend .label;
+	font-size: 12px;
+	padding: 0.3em 0.6em;
+}
  
 ul.actions {
 	@extend .list-unstyled;
