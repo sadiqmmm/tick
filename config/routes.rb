@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     end
 
     resources :projects, only: [:new, :create, :destroy]
-    resources :states, only: [:index, :new, :create]
+    
+    resources :states, only: [:index, :new, :create] do
+      member do
+        get :make_default
+      end
+    end
   end
 
   devise_for :users
