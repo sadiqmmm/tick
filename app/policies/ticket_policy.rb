@@ -1,4 +1,5 @@
 class TicketPolicy < ApplicationPolicy
+
   class Scope < Scope
     def resolve
       scope
@@ -24,6 +25,10 @@ class TicketPolicy < ApplicationPolicy
 	end
 
 	def change_state?
+	  destroy?
+	end
+
+	def tag?
 	  destroy?
 	end
 end

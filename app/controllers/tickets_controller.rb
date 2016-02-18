@@ -18,8 +18,17 @@ class TicketsController < ApplicationController
 	end
 
 	def create
-		@ticket = @project.tickets.build(ticket_params)
+		@ticket = @project.tickets.new
+		
+		whitelisted_params = ticket_params
+		
+		unless policy(@ticket).tag?
+		  whitelisted_params.delete(:tag_names)
+		end
+		
+		@ticket.attributes = whitelisted_params
 		@ticket.author = current_user
+
 		authorize @ticket, :create?
 	
 		if @ticket.save
@@ -34,6 +43,7 @@ class TicketsController < ApplicationController
 
 	def edit
 		authorize @ticket, :update?
+		3.times { @ticket.attachments.build }
   end
 
 	def update
