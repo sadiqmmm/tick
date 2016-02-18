@@ -1,10 +1,5 @@
 class Ticket < ActiveRecord::Base
-
-  searcher do
-    label :tag, from: :tags, field: "name"
-    label :state, from: :state, field: "name"
-  end
- 
+  
   before_create :assign_default_state
   
   attr_accessor :tag_names 
@@ -23,6 +18,11 @@ class Ticket < ActiveRecord::Base
 
   validates :name, presence: true
   validates :description, length: { maximum: 1000 }
+
+  searcher do
+    label :tag, from: :tags, field: "name"
+    label :state, from: :state, field: "name"
+  end 
 
   def tag_names
     @tag_names
