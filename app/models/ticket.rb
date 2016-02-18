@@ -1,6 +1,8 @@
 class Ticket < ActiveRecord::Base
  
   before_create :assign_default_state
+  
+  attr_accessor :tag_names 
 
   belongs_to :project
   belongs_to :author, class_name: "User"
@@ -11,8 +13,26 @@ class Ticket < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
+  has_many :comments, dependent: :destroy
+  has_and_belongs_to_many :tags, uniq: true
+
   validates :name, presence: true
   validates :description, length: { maximum: 1000 }
+
+  def tag_names
+    @tag_names
+  end
+  
+  def tag_names=(names)
+    @tag_names = names
+  end
+
+  def tag_names=(names)
+    @tag_names = names
+    names.split.each do |name|
+    self.tags << Tag.find_or_initialize_by(name: name)
+    end
+  end
 
   private
 		def assign_default_state
