@@ -1,4 +1,8 @@
 class Ticket < ActiveRecord::Base
+
+  searcher do
+    label :tag, from: :tags, field: "name"
+  end
  
   before_create :assign_default_state
   
